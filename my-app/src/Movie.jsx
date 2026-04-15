@@ -11,17 +11,21 @@ const Movie = (props) => {
         marginBottom: "10px"
       }}
     >
-      <div className="image">
-        <img
-          alt="movie"
-          src="https://i.pinimg.com/736x/aa/f7/05/aaf705e06726ce3881288ae4be3ac5fe.jpg"
-          style={{ width: "40px" }}
-        />
-      </div>
-
+      <img
+        src={props.poster}
+        style={{ width: "100px", height: "150px", objectFit: "cover" }}
+      />
       <div className="movie">
         {props.title}, sala: {props.hall}, cena: {props.price} din
       </div>
+
+      <button onClick={() => props.onAction("Like", props.title)}>
+        Like
+      </button>
+
+      <button onClick={() => props.onAction("Dislike", props.title)}>
+        Dislike
+      </button>
     </div>
   );
 };
