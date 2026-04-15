@@ -1,0 +1,29 @@
+import React from "react";
+
+const Movie = (props) => {
+  return (
+    <div
+      className="container"
+      style={{
+        display: "flex",
+        alignItems: "center",
+        gap: "10px",
+        marginBottom: "10px"
+      }}
+    >
+      <div className="image">
+        <img
+          alt="movie"
+          src="https://i.pinimg.com/736x/aa/f7/05/aaf705e06726ce3881288ae4be3ac5fe.jpg"
+          style={{ width: "40px" }}
+        />
+      </div>
+
+      <div className="movie">
+        {props.title}, sala: {props.hall}, cena: {props.price} din
+      </div>
+    </div>
+  );
+};
+
+export default Movie;
