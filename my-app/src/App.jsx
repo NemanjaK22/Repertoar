@@ -1,5 +1,14 @@
 import React from "react";
-import Movie from "./Movie";
+import Header from "./components/Header";
+import Footer from "./components/Footer";
+
+import Home from "./pages/Home";
+import Movies from "./pages/Movies";
+import About from "./pages/About";
+
+import AppInfo from "./components/AppInfo";
+import AuthorInfo from "./components/AuthorInfo";
+import {BrowserRouter, Routes, Route} from 'react-router-dom';
 
 const movies = [
   {
@@ -43,12 +52,21 @@ const formattedDate = `${day}.${month}.${year}`;
     alert(`Dodelili ste "${type}" za film "${title}"!`);
   };
 export default () => (
-  <>
-  <h1>Repertoar za danas ({formattedDate})</h1>
-  {
-    movies.map(movie =>(
-        <Movie title = {movie.title}   hall = {movie.hall || "Film jos uvek nije u ponudi"} price ={movie.price || "300"} poster = {movie.poster} onAction = {handleAction} />
-    ))
-  }
-  </>
+   <BrowserRouter>
+      <Header />
+
+      <h1>Repertoar za danas {formattedDate}</h1>
+
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/movies" element={<Movies movies={movies} onAction={handleAction} />} />
+        <Route path="/about" element={<About /> }>
+          <Route path="app" element={<AppInfo />} />
+          <Route path="author" element={<AuthorInfo />} />
+        </Route>
+
+      </Routes>
+
+      <Footer />
+    </BrowserRouter>
 );
